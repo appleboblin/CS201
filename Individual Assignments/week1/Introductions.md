@@ -1,0 +1,4 @@
+# Self Introduction
+
+I'm Po-Hui, feel free to call me Po. My major is biology with marine biology option. I will be starting my senior year this fall and currently work at the IS Service desk. Not sure what I want to do after graduation yet, probably something that combines biology and technology.
+Programing is always fun, and I enjoy random coding projects and learning different languages. I've used a few programming languages before, such as Python, Bash, C, C++, C#, HTML, R, and Node.js, to name a few. I never learned coding formally as a class (other than R and basic HTML/CSS) or the fundamentals, always just learned just enough to accomplish my projects. Examples of my projects are discord bots, websites, Arduino projects, and editing firmware for keyboards and 3D printers. I hope to use the knowledge I will learn in this class to help me avoid some fundamental mistakes that I often make.
