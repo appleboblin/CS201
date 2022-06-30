@@ -39,59 +39,49 @@ def deg(degrees):
 # a^b
 def pow(base, exponent):
     return base ** exponent
-# Factorial nth term Need better function
+# Factorial nth term
 def fact(n):
     term = n
     while term >= 2:
         term -= 1
         n = n * term
+    if n == 0: # factorial 0 = 1
+        n = 1
     return n
 
-# def compute(x, n):
-#     if n == 1:
-#         return x
-#     else: 
-#         Decimal((x/n*compute(x,n-1)))
-#         return
-
 # Taylor Expansion
-def sin(x): # Somehow this is not accurate but cos is?
+def sin(x): 
+    list = [] # Create list
     rad = deg(x)
+    list.append(rad) # append rad to list
     signs = -1
     denom = 3
     count = 1
     nTerms = 100
     while count < nTerms:
-        value = Decimal(rad) + Decimal((pow(rad, denom)/(fact(denom) * signs)))
-        #x -= compute(x, denom)
+        value = Decimal((pow(rad, denom)/(fact(denom) * signs))) # skips term 1
+        list.append(value) # add term to list
         denom += 2
         count += 1
         signs = signs * -1
-    return value #value x
+    return sum(list) # add lists together
 
-def cos(x): # copy paste of sin with one change Very accurate
+def cos(x):
+    list = []
     rad = deg(x)
-    signs = -1
-    denom = 2
+    signs = 1
+    denom = 0
     count = 1
     nTerms = 100
-    value = 1
     while count < nTerms:
-        value = Decimal(value) + Decimal((pow(rad, denom)/(fact(denom) * signs)))
-        #x -= compute(x, denom)
+        value = Decimal((pow(rad, denom)/(fact(denom) * signs)))
+        list.append(value)
         denom += 2
         count += 1
         signs = signs * -1
-    return value #value x
+    return sum(list)
 
 def tan(x):
     return sin(x)/cos(x)
 
-# rad = deg(45)
-# pnt = pow(-1, n+1)* ((pow(rad, ((2*n)-1)))/fact((2*n)-1))
-# print(fact(10))
-# print(sin(inPut))
-# print(cos(inPut))
-# print(tan(inPut))
-# cos(inPut)
 inPut()
