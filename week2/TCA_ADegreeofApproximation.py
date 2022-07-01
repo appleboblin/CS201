@@ -53,9 +53,9 @@ def fact(n):
 def sin(x): 
     list = [] # Create list
     rad = deg(x)
-    list.append(rad) # append rad to list
-    signs = -1
-    denom = 3
+    #list.append(rad) # append rad to list
+    signs = 1
+    denom = 1
     count = 1
     nTerms = 100
     while count < nTerms:
