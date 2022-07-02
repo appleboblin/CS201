@@ -13,75 +13,86 @@
 # print(tan(x))
 
 # Accurate calculations
-from decimal import Decimal
+from decimal import Decimal # able to process larger numbers
 # Taylor / Maclaurin Series for Sin (x)
 # https://www.youtube.com/watch?v=dp2ovDuWhro
 # Assignment
 # Simple way 2*3*4*5*6*7 for gradescope
 
-# Nicer looking
-def inPut():
-    angle = float(input("Please enter angle size (0 - 90): "))
-    while True:
-        if 1 <= int(angle) <= 90:
-            print("Sin for %s"  % angle + '\u00b0' + " is : " + str(sin(angle)))
-            print("Cos for %s"  % angle + '\u00b0' + " is : " + str(cos(angle)))
-            print("Tan for %s"  % angle + '\u00b0' + " is : " + str(tan(angle)))
-            break
-        angle = float(input("Try Again, Please enter angle size (0 - 90) : "))  
+def outPut(angle): # define get user input function
+    while True: # continue to run the loop 
+        if 1 <= int(angle) <= 90: # only accepts angle ranging 0-90 and numbers
+            print("Sin for %s"  % angle + '\u00b0' + " is : " + str(sin(angle))) # Print sin
+            print("Cos for %s"  % angle + '\u00b0' + " is : " + str(cos(angle))) # Print cos
+            print("Tan for %s"  % angle + '\u00b0' + " is : " + str(tan(angle))) # Print tan
+            break # breaks out of while loop
+        else: # if input not between 0-90
+            angle = float(input("Try Again, Please enter angle size (0 - 90) : ")) # Prompt the user to enter the angle if the input is not within 0-90
+            outPut(angle) # run function again
+            break # exit out of while loop
 
-# inPut = float(input())
+# Calculate x Radian
+def radian(degrees): # define radian function
+    x = Decimal((degrees * 3.1415926)/180) # formula to calculate radian
+    return x # return radian
 
-# Calculate X
-def deg(degrees):
-    x = Decimal((degrees * 3.1415926)/180)
-    return x
-# a^b
-def pow(base, exponent):
-    return base ** exponent
+# exponentiation a^b
+def power(base, exponent): # define exponentiation function
+    return base ** exponent # return exponentiation
+
 # Factorial nth term
-def fact(n):
-    term = n
-    while term >= 2:
-        term -= 1
-        n = n * term
-    if n == 0: # factorial 0 = 1
-        n = 1
-    return n
+def factorial(n): # define factorial function
+    term = n # set current term
+    while term >= 2: # loop to run while current term is greater than 2
+        term -= 1 # current term minus 1
+        n = n * term # multiply previous term with current term and set new value to previous term(n)
+    if n == 0: # account for factorial 0 = 1
+        return 1 # set n to 0
+    return n #  return final number
 
 # Taylor Expansion
-def sin(x): 
+def sin(x): # define sin function
     list = [] # Create list
-    rad = deg(x)
-    #list.append(rad) # append rad to list
-    signs = 1
-    denom = 1
-    count = 1
-    nTerms = 100
-    while count < nTerms:
-        value = Decimal((pow(rad, denom)/(fact(denom) * signs))) # skips term 1
-        list.append(value) # add term to list
-        denom += 2
-        count += 1
-        signs = signs * -1
-    return sum(list) # add lists together
+    rad = radian(x) # Create radian variable
+    signs = 1 # start at positive
+    denominator = 1 # starting denominator for factorial
+    count = 1 # starting count
+    nTerms = 100 # precision of the calculation, larger number = more accurate
+    while count < nTerms: # loop when count is smaller than nTerms
+        value = Decimal((power(rad, denominator)/(factorial(denominator) * signs))) # Calculate each term
+        list.append(value) # add each term to list
+        denominator += 2 # add two to denominator each term
+        count += 1 # add 1 to count, adding up to nTerms
+        signs = signs * -1 # change sign each term
+    return sum(list) # add lists together and return the number
 
-def cos(x):
-    list = []
-    rad = deg(x)
-    signs = 1
-    denom = 0
-    count = 1
-    nTerms = 100
-    while count < nTerms:
-        value = Decimal((pow(rad, denom)/(fact(denom) * signs)))
-        list.append(value)
-        denom += 2
-        count += 1
-        signs = signs * -1
-    return sum(list)
+def cos(x): # define cos function
+    list = [] # Create list
+    rad = radian(x) # Create radian variable
+    signs = 1 # start at positive
+    denominator = 0 # starting denominator for factorial
+    count = 1 # starting count
+    nTerms = 100 # precision of the calculation, larger number = more accurate
+    while count < nTerms: # loop when count is smaller than nTerms
+        value = Decimal((power(rad, denominator)/(factorial(denominator) * signs))) # Calculate each term
+        list.append(value) # add each term to list
+        denominator += 2 # add two to denominator each term
+        count += 1 # add 1 to count, adding up to nTerms
+        signs = signs * -1 # change sign each term
+    return sum(list) # add lists together and return the number
 
-def tan(x):
-    return sin(x)/cos(x)
+def tan(x): # define tangent function
+    return sin(x)/cos(x) # return tangent
 
-inPut()
+def main(): # define main function
+    angle = input("Please enter angle size (0 - 90): ") # prompt user to enter angle
+    try:
+        angle = float(angle)
+        outPut(angle) # runs outPut function
+    except Exception: # run when theres an error, input not numbers
+        print("Error, Please enter a number.") # print out why theres an error
+        main() # run main function again
+
+# Call main function
+if __name__ == "__main__":
+    main()
