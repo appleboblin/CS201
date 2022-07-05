@@ -21,7 +21,7 @@ from decimal import Decimal # able to process larger numbers
 
 def outPut(angle): # define get user input function
     while True: # continue to run the loop 
-        if 1 <= int(angle) <= 90: # only accepts angle ranging 0-90 and numbers
+        if 1 <= angle <= 90: # only accepts angle ranging 0-90 and numbers
             print("Sin for %s"  % angle + '\u00b0' + " is : " + str(sin(angle))) # Print sin
             print("Cos for %s"  % angle + '\u00b0' + " is : " + str(cos(angle))) # Print cos
             print("Tan for %s"  % angle + '\u00b0' + " is : " + str(tan(angle))) # Print tan
