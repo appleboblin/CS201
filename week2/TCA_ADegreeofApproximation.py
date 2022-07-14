@@ -45,6 +45,12 @@ def factorial(n): # define factorial function
     if n == 0: # account for factorial 0 = 1
         return 1 # set n to 0
     return n #  return final number
+# # Better factorial function. 
+# def factorial(n):
+#     m = 1
+#     for i in range (0, n):
+#         m (i + 1) # This statement is the same as m = m * (i + 1)
+#     return m
 
 # Taylor Expansion
 def sin(x): # define sin function
