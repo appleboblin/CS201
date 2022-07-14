@@ -5,3 +5,6 @@ def tip(bill, percent):
 total = (bill*percent/100)+bill
 tips = bill*percent/100
 return total, tips
+
+I've written a factorial function using a while loop for the assignment a few weeks ago, your function seems a lot easier than what I came up with. Factorial is useful in many applications such as determining the amount of school buses needed for each school district.
+Suggestions about the code: to print out new lines you can use `\n` instead of `print()`
