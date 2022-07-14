@@ -36,10 +36,6 @@ def radian(degrees): # define radian function
     x = Decimal((degrees * 3.1415926)/180) # formula to calculate radian
     return x # return radian
 
-# exponentiation a^b
-def power(base, exponent): # define exponentiation function
-    return base ** exponent # return exponentiation
-
 # Factorial nth term
 def factorial(n): # define factorial function
     term = n # set current term
@@ -59,7 +55,7 @@ def sin(x): # define sin function
     count = 1 # starting count
     nTerms = 100 # precision of the calculation, larger number = more accurate
     while count < nTerms: # loop when count is smaller than nTerms
-        value = Decimal((power(rad, denominator)/(factorial(denominator) * signs))) # Calculate each term
+        value = Decimal((pow(rad, denominator)/(factorial(denominator) * signs))) # Calculate each term
         list.append(value) # add each term to list
         denominator += 2 # add two to denominator each term
         count += 1 # add 1 to count, adding up to nTerms
@@ -74,7 +70,7 @@ def cos(x): # define cos function
     count = 1 # starting count
     nTerms = 100 # precision of the calculation, larger number = more accurate
     while count < nTerms: # loop when count is smaller than nTerms
-        value = Decimal((power(rad, denominator)/(factorial(denominator) * signs))) # Calculate each term
+        value = Decimal((pow(rad, denominator)/(factorial(denominator) * signs))) # Calculate each term
         list.append(value) # add each term to list
         denominator += 2 # add two to denominator each term
         count += 1 # add 1 to count, adding up to nTerms
