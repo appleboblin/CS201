@@ -15,3 +15,11 @@ Examples of strings that the regular expression matches:
 034 93 2834
 636 98 8039
 038-05-1120
+
+Response:
+Hi Kyle,
+
+I think using a regular expression to check for password strength is a good idea as people tend to use weak passwords that are easily cracked. One improvement to your regex is adding the exclusion of common phrases, such as `(?!.*pass|.*word|.*1234|.*asdf)` or running the password through a dictionary of common passwords after the password passes the first regular expression test.
+I like to use passphrases, so I would use regex that's something like this:
+`^\S{6,}[-]+\S{6,}[-]+\S{6,}$`
+It's looking for 3 groups of 6 characters or more separated by one or more `-`. One example is `Nugget-Watt3d-Grade5`
